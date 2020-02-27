@@ -28,7 +28,8 @@ const { parse } = require("json2csv");
           "Supervisor",
           "Specialisations",
           "Categories",
-          "Co-supervisor"
+          "Co-supervisor",
+          "Team"
         ]) {
           contentInListForm[list.toLocaleLowerCase().replace("-", "")] = $(
             `h4:contains('${list}')`
@@ -82,6 +83,10 @@ const { parse } = require("json2csv");
         },
         {
           label: "cosupervisor",
+          value: (row, field) => row[field.label].join(",")
+        },
+        {
+          label: "team",
           value: (row, field) => row[field.label].join(",")
         },
         "allocated"
